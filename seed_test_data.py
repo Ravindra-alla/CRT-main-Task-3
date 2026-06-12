@@ -5,11 +5,11 @@ import os
 # Add current directory to python path
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-from utils.database import get_or_create_patient, get_or_create_doctor, add_user, update_doctor
+from utils.database import get_or_create_patient, get_or_create_doctor, add_user, update_doctor, DB_PATH
 from utils.auth import hash_password
 
 def seed():
-    conn = sqlite3.connect('healthcare_system.db')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     
     # 1. Sync all existing patients

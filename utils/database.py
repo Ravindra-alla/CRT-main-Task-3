@@ -4,6 +4,8 @@ from datetime import datetime
 import os
 import numpy as np
 
+from config import DATABASE_URL
+
 # Register adapters for numpy types so sqlite3 handles them correctly in raw SQL queries
 try:
     sqlite3.register_adapter(np.int64, int)
@@ -13,7 +15,7 @@ try:
 except Exception:
     pass
 
-DB_PATH = "healthcare_system.db"
+DB_PATH = os.getenv("DB_PATH", DATABASE_URL)
 
 def init_database():
     """Initialize the database with required tables"""

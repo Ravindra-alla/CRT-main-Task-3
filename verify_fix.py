@@ -4,14 +4,14 @@ import os
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-from utils.database import get_or_create_patient, get_or_create_doctor, get_all_doctors, add_appointment, get_appointments_with_details, add_user
+from utils.database import get_or_create_patient, get_or_create_doctor, get_all_doctors, add_appointment, get_appointments_with_details, add_user, DB_PATH
 from utils.auth import hash_password
 
 def run_tests():
     print("Starting database integration tests...\n")
     
     # Clean up previous test state
-    conn = sqlite3.connect('healthcare_system.db')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("DELETE FROM appointments")
     cursor.execute("DELETE FROM users WHERE username='test_patient_verify'")
@@ -25,7 +25,7 @@ def run_tests():
     pwd = hash_password("testpwd123")
     
     # Check if user already exists
-    conn = sqlite3.connect('healthcare_system.db')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("SELECT user_id FROM users WHERE username=?", (username,))
     res = cursor.fetchone()
