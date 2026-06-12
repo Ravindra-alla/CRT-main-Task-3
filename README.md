@@ -2,6 +2,10 @@
 
 A comprehensive Streamlit-based healthcare platform featuring AI-powered disease prediction, patient management, resource optimization, and staff scheduling.
 
+
+Live Demo link:-https://crt-main-task-3-1.onrender.com
+
+
 ## 🏥 Features
 
 ### 1. **Authentication & User Management**
